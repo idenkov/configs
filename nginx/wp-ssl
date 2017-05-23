@@ -1,0 +1,72 @@
+server {
+        listen  80;
+        listen [::]:80;
+
+        server_name domain.com;
+        return 301 https://domain.com$request_uri;
+}
+
+server {
+        listen 443 ssl spdy;
+        spdy_headers_comp 1;
+        
+        server_name domain.com;
+
+        error_log /var/log/nginx/domain_error.log warn;
+        access_log /var/log/nginx/domain_access.log;
+        access_log /var/log/nginx/access.log combined;
+
+        root /var/www/domain.com/public_html;
+        index index.html index.php index.htm;
+
+        ssl on;
+        ssl_certificate /etc/letsencrypt/live/domain.com/fullchain.pem;
+        ssl_certificate_key /etc/letsencrypt/live/domain.com/privkey.pem;
+
+        ssl_session_timeout 5m;
+        ssl_session_cache shared:SSL:20m;
+
+        ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+        ssl_ciphers "HIGH:!aNULL:!MD5 or HIGH:!aNULL:!MD5:!3DES";
+        ssl_prefer_server_ciphers on;
+
+        location @rewrites {
+                rewrite ^ /index.php$request_uri last;
+        }
+
+        location ~ \.php$ {
+                fastcgi_split_path_info ^(.+\.php)(/.+)$;
+                # NOTE: You should have "cgi.fix_pathinfo = 0;" in php.ini
+
+                # With php5-cgi alone:
+                #fastcgi_pass 127.0.0.1:9000;
+                # With php5-fpm:
+                fastcgi_pass unix:/var/run/php5-fpm.sock;
+                fastcgi_index index.php;
+                include fastcgi_params;
+                #fastcgi cache
+                #fastcgi_cache microcache;
+                #fastcgi_cache_key $scheme$host$request_uri$request_method;
+                #fastcgi_cache_valid 200 301 302 30s;
+                #fastcgi_cache_use_stale updating error timeout invalid_header http_500;
+                fastcgi_pass_header Set-Cookie;
+                fastcgi_pass_header Cookie;
+                fastcgi_ignore_headers Cache-Control Expires Set-Cookie;
+        }
+        # Let WordPress handle 404 errors
+        # Not working for now
+        error_page  404  = /index.php?q=$uri;
+        error_page  500 502 503 504  /50x.html;
+
+        location ~* .(jpg|jpeg|png|gif|ico|css|js)$ {
+                expires 30d;
+        }
+
+     # deny access to .htaccess files, if Apache's document root
+        # concurs with nginx's one
+        #
+        location ~ /\.ht {
+               deny all;
+        }
+}
+
