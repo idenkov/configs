@@ -19,14 +19,14 @@ font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # right-to-left text rendering, you should instead use pango for rendering and
 # chose a FreeType font, such as:
 #font pango:Helvetica 12
-font pango: Ubuntu mono 10:
+font pango: Ubuntu mono 12
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # volume control
-bindsym XF86AudioLowerVolume exec /usr/bin/pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym XF86AudioRaiseVolume exec /usr/bin/pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym Scroll_Lock exec /usr/bin/pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym Pause exec /usr/bin/pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioMute exec /usr/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 #Multimedia keys
@@ -178,7 +178,7 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3blocks -c ~/.i3/i3blocks.conf
+        status_command i3blocks -c ~/.config/i3blocks/i3blocks.conf
 	#position top
         #colors {
             #focused_workspace #000000 #9ab53d
@@ -191,7 +191,7 @@ bar {
 }
 
 #Add language switcher
-#exec --no-startup-id "setxkbmap -model pc105 -layout us,bg -option grp:alt_shift_toggle"
+exec --no-startup-id "setxkbmap -model pc105 -layout us,bg -option grp:alt_shift_toggle"
 bindsym Ctrl+Shift+1 exec --no-startup-id setxkbmap us
 bindsym Ctrl+Shift+2 exec --no-startup-id setxkbmap bg -variant phonetic
 
@@ -205,13 +205,15 @@ exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agen
 # Enable screenshot popup floating
 for_window [class="Gnome-screenshot"] floating enable
 bindsym Print exec gnome-screenshot --interactive
-
 #Screen lock
 bindsym Control+Mod1+l exec gnome-screensaver-command -l
 exec xautolock -time 1 -locker screenlock
 
 #Turn off screen
 bindsym $mod+[ exec xset dpms force suspend
+
+#Start compton composite manger
+exec --no-startup-id compton --config ~/.config/compton.conf -b
 
 #Autostart applications
 exec --no-startup-id nm-applet
@@ -220,7 +222,7 @@ exec --no-startup-id i3-msg 'workspace 3; exec pcmanfm'
 exec --no-startup-id i3-msg ' workspace 9; exec hexchat'
 #exec --no-startup-id i3-msg ' workspace 1; exec firefox'
 exec --no-startup-id i3-msg ' workspace 2; exec chromium-browser'
-exec --no-startup-id i3-msg ' exec owncloud'
+exec --no-startup-id i3-msg 'workspace 9; exec slack'
 #exec --no-startup-id i3-msg 'workspace 8; exec clementine'
-exec --no-startup-id i3-msg  'exec skype'
+exec --no-startup-id i3-msg  'workspace 9; exec skypeforlinux'
 
