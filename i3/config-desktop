@@ -191,9 +191,9 @@ bar {
 }
 
 #Add language switcher
-exec --no-startup-id "setxkbmap -model pc105 -layout us,bg -option grp:alt_shift_toggle"
-bindsym Ctrl+Shift+1 exec --no-startup-id setxkbmap us
-bindsym Ctrl+Shift+2 exec --no-startup-id setxkbmap bg -variant phonetic
+exec --no-startup-id "setxkbmap -model pc105 -layout us,bg -variant ,phonetic -option grp:alt_shift_toggle"
+#bindsym Ctrl+Shift+1 exec --no-startup-id setxkbmap us
+#bindsym Ctrl+Shift+2 exec --no-startup-id setxkbmap bg -variant phonetic
 
 #Add keyrings to startup?
 #exec --no-startup-id gnome-settings-daemon
@@ -206,12 +206,10 @@ exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agen
 # Enable screenshot popup floating
 for_window [class="Gnome-screenshot"] floating enable
 bindsym Print exec gnome-screenshot --interactive
-#Screen lock
-bindsym Control+Mod1+l exec gnome-screensaver-command -l
-exec xautolock -time 1 -locker screenlock
 
 #Turn off screen
-bindsym $mod+[ exec xset dpms force suspend
+#bindsym $mod+[ exec xset dpms force suspend
+exec xautolock -time 25 -locker '/usr/bin/xset dpms force suspend'
 
 #Start compton composite manger
 exec --no-startup-id compton --config ~/.config/compton.conf -b
