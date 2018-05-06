@@ -191,9 +191,9 @@ bar {
 }
 
 #Add language switcher
-exec --no-startup-id "setxkbmap -model pc105 -layout us,bg -variant ,phonetic -option grp:alt_shift_toggle"
-#bindsym Ctrl+Shift+1 exec --no-startup-id setxkbmap us
-#bindsym Ctrl+Shift+2 exec --no-startup-id setxkbmap bg -variant phonetic
+exec --no-startup-id '/usr/bin/setxkbmap -model pc105 -layout us,bg -variant ,phonetic -option grp:alt_shift_toggle'
+bindsym Ctrl+Shift+1 exec --no-startup-id setxkbmap us
+bindsym Ctrl+Shift+2 exec --no-startup-id setxkbmap bg -variant phonetic
 
 #Add keyrings to startup?
 #exec --no-startup-id gnome-settings-daemon
@@ -209,7 +209,8 @@ bindsym Print exec gnome-screenshot --interactive
 
 #Turn off screen
 #bindsym $mod+[ exec xset dpms force suspend
-exec xautolock -time 25 -locker '/usr/bin/xset dpms force suspend'
+#exec xautolock -time 25 -locker '/usr/bin/xset dpms force suspend'
+exec --no-startup-id xautolock -time 25 -locker 'i3lock -d -c 000000'
 
 #Start compton composite manger
 exec --no-startup-id compton --config ~/.config/compton.conf -b
@@ -224,4 +225,3 @@ exec --no-startup-id i3-msg ' workspace 2; exec chromium-browser'
 #exec --no-startup-id i3-msg 'workspace 9; exec slack'
 #exec --no-startup-id i3-msg 'workspace 8; exec clementine'
 exec --no-startup-id i3-msg  'workspace 9; exec skypeforlinux'
-
