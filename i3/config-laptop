@@ -222,6 +222,9 @@ exec --no-startup-id xautolock -time 25 -locker 'i3lock -d -c 000000'
 #Start compton composite manger
 #exec --no-startup-id compton --config ~/.config/compton.conf -b
 
+#Enable tap to click on thinkpad t440
+xinput --set-prop "AlpsPS/2 ALPS DualPoint TouchPad" "libinput Tapping Enabled" 1
+
 #Autostart applications
 exec --no-startup-id nm-applet
 exec --no-startup-id gnome-encfs-manager
