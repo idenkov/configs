@@ -29,6 +29,13 @@ bindsym XF86AudioLowerVolume exec /usr/bin/pactl set-sink-volume @DEFAULT_SINK@ 
 bindsym XF86AudioRaiseVolume exec /usr/bin/pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioMute exec /usr/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle
 
+#Screen brightness
+#bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
+#bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # increase screen brightness
+bindsym XF86MonBrightnessUp exec bash /home/ivan/.config/i3/brightness_up.sh
+bindsym XF86MonBrightnessDown exec bash /home/ivan/.config/i3/brightness_down.sh
+
+
 #Multimedia keys
 #bindsym XF86AudioPlay exec clementine -t 
 #bindsym XF86AudioStop exec clementine -s
