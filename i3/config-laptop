@@ -217,7 +217,7 @@ bindsym Print exec gnome-screenshot --interactive
 #Turn off screen
 #bindsym $mod+[ exec xset dpms force suspend
 #exec xautolock -time 25 -locker '/usr/bin/xset dpms force suspend'
-exec --no-startup-id xautolock -time 25 -locker 'i3lock -d -c 000000'
+exec --no-startup-id xautolock -time 5 -locker 'i3lock -d -c 000000' -corners 0-00
 
 #Start compton composite manger
 exec --no-startup-id compton --config ~/.config/compton.conf -b
@@ -230,8 +230,8 @@ exec --no-startup-id nm-applet
 exec --no-startup-id gnome-encfs-manager
 exec --no-startup-id i3-msg 'workspace 3; exec pcmanfm'
 exec --no-startup-id i3-msg ' workspace 9; exec hexchat'
-#exec --no-startup-id i3-msg ' workspace 1; exec firefox'
-exec --no-startup-id i3-msg ' workspace 2; exec chromium-browser'
+exec --no-startup-id i3-msg ' workspace 2; exec firefox'
+#exec --no-startup-id i3-msg ' workspace 2; exec chromium-browser'
 #exec --no-startup-id i3-msg 'workspace 9; exec slack'
 #exec --no-startup-id i3-msg 'workspace 8; exec clementine'
 exec --no-startup-id i3-msg  'workspace 9; exec skypeforlinux'
