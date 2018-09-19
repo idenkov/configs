@@ -67,7 +67,7 @@ au BufNewFile,BufRead *.js, *.html, *.css
     \ set softtabstop=2 |
     \ set shiftwidth=2 |
 
-highlight BadWhitespace ctermbg=red guibg=red
+highlight BadWhitespace ctermbg=brown guibg=red
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
 nnoremap <F3> :NERDTreeToggle<CR>
