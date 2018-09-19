@@ -70,5 +70,6 @@ au BufNewFile,BufRead *.js, *.html, *.css
 highlight BadWhitespace ctermbg=red guibg=red
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
+nnoremap <F3> :NERDTreeToggle<CR> "toggle nerdtree
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 let NERDTreeShowHidden=1 " show hidden files
