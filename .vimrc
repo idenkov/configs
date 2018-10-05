@@ -80,3 +80,9 @@ au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 nnoremap <F3> :NERDTreeToggle<CR>
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 let NERDTreeShowHidden=1 " show hidden files
+
+" Jump to your last position when reopen a file
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+    \| exe "normal! g'\"" | endif
+endif
