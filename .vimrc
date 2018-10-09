@@ -4,6 +4,9 @@
 set nocompatible              " required
 filetype off                  " required
 
+" Show filename
+set laststatus=2
+
 " Save whenever switching windows or leaving vim. This is useful when running
 " the tests inside vim without having to save all files first.
 au FocusLost,WinLeave * :silent! wa
