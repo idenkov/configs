@@ -21,6 +21,9 @@ font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 #font pango:Helvetica 12
 font pango: Ubuntu mono 14
 
+#Set dpi
+exec xrandr --dpi 120
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -210,7 +213,7 @@ bindsym Print exec gnome-screenshot --interactive
 #Turn off screen
 #bindsym $mod+[ exec xset dpms force suspend
 #exec xautolock -time 25 -locker '/usr/bin/xset dpms force suspend'
-exec --no-startup-id xautolock -time 25 -locker 'i3lock -d -c 000000'
+exec --no-startup-id xautolock -time 15 -locker 'xset dpms 0 0 9000; setxkbmap us; i3lock -d -c 000000' -corners 0-00
 
 #Start compton composite manger
 exec --no-startup-id compton --config ~/.config/compton.conf -b
@@ -221,7 +224,7 @@ exec --no-startup-id gnome-encfs-manager
 exec --no-startup-id i3-msg 'workspace 3; exec pcmanfm'
 exec --no-startup-id i3-msg ' workspace 9; exec hexchat'
 #exec --no-startup-id i3-msg ' workspace 1; exec firefox'
-exec --no-startup-id i3-msg ' workspace 2; exec chromium-browser'
+#exec --no-startup-id i3-msg ' workspace 2; exec chromium-browser'
 #exec --no-startup-id i3-msg 'workspace 9; exec slack'
 #exec --no-startup-id i3-msg 'workspace 8; exec clementine'
 exec --no-startup-id i3-msg  'workspace 9; exec skypeforlinux'
