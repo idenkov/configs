@@ -4,6 +4,8 @@
 set nocompatible              " required
 filetype off                  " required
 
+set number
+
 " Show filename
 set laststatus=2
 
