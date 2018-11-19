@@ -206,7 +206,7 @@ bindsym Print exec gnome-screenshot --interactive
 #Turn off screen
 #bindsym $mod+[ exec xset dpms force suspend
 #exec xautolock -time 25 -locker '/usr/bin/xset dpms force suspend'
-exec --no-startup-id xautolock -time 15 -locker 'xset dpms 0 0 9000; setxkbmap us; i3lock -d -c 000000' -corners 0-00
+exec --no-startup-id xautolock -time 15 -locker 'xset dpms 900 900 900; setxkbmap us; i3lock -d -c 000000' -corners 0-00
 
 #Start compton composite manger
 exec --no-startup-id compton --config ~/.config/compton.conf -b
