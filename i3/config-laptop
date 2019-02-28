@@ -213,6 +213,8 @@ exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agen
 #exec xautolock -time 25 -locker '/usr/bin/xset dpms force suspend'
 exec --no-startup-id xautolock -time 5 -locker 'setxkbmap us; xmodmap -e "add mod4 = Print"; i3lock -d -c 000000' -corners 0-00
 
+#Bind to lock the screen
+bindsym $mod+Ctrl+l exec --no-startup-id i3lock -d -c 000000
 
 #Start compton composite manger
 exec --no-startup-id compton --config ~/.config/compton.conf -b
