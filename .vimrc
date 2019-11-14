@@ -4,7 +4,13 @@
 set nocompatible              " required
 filetype off                  " required
 
+" Show line numers, toggle with F2
 set number
+nnoremap <F2> :set nonumber!<CR>
+
+" Show tabs
+set list
+set listchars=tab:>-
 
 " Show filename
 set laststatus=2
@@ -30,13 +36,13 @@ Plugin 'gmarik/Vundle.vim'
 " used Bundle instead of Plugin)
 
 " ...
-Plugin 'nvie/vim-flake8'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'dracula/vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'stephpy/vim-yaml'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -53,9 +59,6 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-"Toggle line numbers
-nnoremap <F2> :set nonumber!<CR>
-
 " Enable folding
 set foldmethod=indent
 set foldlevel=99
@@ -64,6 +67,9 @@ set foldlevel=99
 nnoremap <space> za
 
 let g:SimpylFold_docstring_preview=1
+
+au BufNewFile,BufRead hosts
+   \ set tabstop=4 expandtab
 
 au BufNewFile,BufRead *.py
     \ set tabstop=4 |
