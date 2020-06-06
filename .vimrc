@@ -4,17 +4,6 @@
 set nocompatible              " required
 filetype off                  " required
 
-" Show line numers, toggle with F2
-set number
-nnoremap <F2> :set nonumber!<CR>
-
-" Show tabs
-set list
-set listchars=tab:>-
-
-" Show filename
-set laststatus=2
-
 " Save whenever switching windows or leaving vim. This is useful when running
 " the tests inside vim without having to save all files first.
 au FocusLost,WinLeave * :silent! wa
@@ -36,13 +25,12 @@ Plugin 'gmarik/Vundle.vim'
 " used Bundle instead of Plugin)
 
 " ...
+Plugin 'nvie/vim-flake8'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'dracula/vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'stephpy/vim-yaml'
+Plugin 'powerline/powerline'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -54,10 +42,25 @@ syntax on
 color dracula
 
 "split navigations
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+nnoremap <C-Down> <C-W><C-J>
+nnoremap <C-Up> <C-W><C-K>
+nnoremap <C-Right> <C-W><C-L>
+nnoremap <C-Left> <C-W><C-H>
+
+"resize windows
+nnoremap <S-up> :res +5<CR>
+nnoremap <S-down> :res -5<CR>
+nnoremap <S-right> :vertical resize +5<CR>
+nnoremap <S-left> :vertical resize -5<CR>
+
+
+" Tab navigation 
+nnoremap <C-t>     :tabnew<CR>
+inoremap <C-t>     <Esc>:tabnew<CR>
+nnoremap <C-w> :tabclose<CR>
+
+"Toggle line numbers
+nnoremap <F2> :set nonumber!<CR>
 
 " Enable folding
 set foldmethod=indent
@@ -68,14 +71,11 @@ nnoremap <space> za
 
 let g:SimpylFold_docstring_preview=1
 
-au BufNewFile,BufRead hosts
-   \ set tabstop=4 expandtab
-
 au BufNewFile,BufRead *.py
     \ set tabstop=4 |
     \ set softtabstop=4 |
     \ set shiftwidth=4 |
-    \ set textwidth=98 |
+    \ set textwidth=79 |
     \ set expandtab |
     \ set autoindent |
     \ set fileformat=unix |
@@ -91,6 +91,11 @@ au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 nnoremap <F3> :NERDTreeToggle<CR>
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 let NERDTreeShowHidden=1 " show hidden files
+
+" Automatically save the session when leaving Vim
+autocmd! VimLeave * mksession .vim_session
+" Automatically load the session when entering vim
+autocmd! VimEnter * source .vim_session
 
 " Jump to your last position when reopen a file
 if has("autocmd")
