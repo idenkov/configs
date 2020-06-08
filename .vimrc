@@ -41,6 +41,10 @@ set encoding=utf-8
 syntax on
 color dracula
 
+"new split
+nnoremap <S-v> :vs<CR>
+nnoremap <S-h> :sp<CR>
+
 "split navigations
 nnoremap <C-Down> <C-W><C-J>
 nnoremap <C-Up> <C-W><C-K>
