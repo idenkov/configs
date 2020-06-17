@@ -97,9 +97,9 @@ let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 let NERDTreeShowHidden=1 " show hidden files
 
 " Automatically save the session when leaving Vim
-autocmd! VimLeave * mksession .vim_session
+" autocmd! VimLeave * mksession .vim_session
 " Automatically load the session when entering vim
-autocmd! VimEnter * source .vim_session
+" autocmd! VimEnter * source .vim_session
 
 " Jump to your last position when reopen a file
 if has("autocmd")
