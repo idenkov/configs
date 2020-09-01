@@ -42,6 +42,7 @@ set encoding=utf-8
 syntax on
 color dracula
 
+set cursorline              " highlight current line
 set list
 if v:version < 800
   set listchars=eol:¬,tab:🠂\ ,nbsp:_              " old versions can't list space
