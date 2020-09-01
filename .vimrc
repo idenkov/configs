@@ -31,6 +31,7 @@ Plugin 'tmhedberg/SimpylFold'
 Plugin 'dracula/vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'powerline/powerline'
+Plugin 'pearofducks/ansible-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -41,6 +42,15 @@ set encoding=utf-8
 syntax on
 color dracula
 
+set list
+if v:version < 800
+  set listchars=eol:¬,tab:🠂\ ,nbsp:_              " old versions can't list space
+else
+  set listchars=eol:¬,tab:🠂\ ,space:·,nbsp:_      " but newer do
+endif
+
+set tabstop=4
+set softtabstop=4
 "new split
 nnoremap <S-v> :vs<CR>
 nnoremap <S-h> :sp<CR>
