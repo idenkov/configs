@@ -9,6 +9,7 @@ font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # clear in small sizes. However, if you need a lot of unicode glyphs or
 # right-to-left text rendering, you should instead use pango for rendering and
 # chose a FreeType font, such as:
+#font pango: Helvetica 12
 font pango: Ubuntu mono 12
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -181,7 +182,7 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3blocks -c ~/.config/i3blocks/i3blocks.conf
 	#status_command i3status
-	position top
+	#position top
         #colors {
             #focused_workspace #000000 #9ab53d
             #active_workspace #9ab53d #080808
@@ -193,9 +194,9 @@ bar {
 }
 
 #Add language switcher
-exec --no-startup-id '/usr/bin/setxkbmap -model pc105 -layout us,bg -variant ,phonetic -option grp:alt_shift_toggle'
-bindsym Ctrl+Shift+1 exec --no-startup-id setxkbmap us
-bindsym Ctrl+Shift+2 exec --no-startup-id setxkbmap bg -variant phonetic
+#exec --no-startup-id '/usr/bin/setxkbmap -model pc105 -layout us,bg -variant ,phonetic -option grp:alt_shift_toggle'
+#bindsym Ctrl+Shift+1 exec --no-startup-id setxkbmap us
+#bindsym Ctrl+Shift+2 exec --no-startup-id setxkbmap bg -variant phonetic
 
 #Remap print screen to windows key
 exec --no-startup-id /usr/bin/xmodmap -e "add mod4 = Print"
