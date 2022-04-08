@@ -197,6 +197,8 @@ bar {
 #exec --no-startup-id '/usr/bin/setxkbmap -model pc105 -layout us,bg -variant ,phonetic -option grp:alt_shift_toggle'
 #bindsym Ctrl+Shift+1 exec --no-startup-id setxkbmap us
 #bindsym Ctrl+Shift+2 exec --no-startup-id setxkbmap bg -variant phonetic
+#Potential bug with ibus that slow down X/Desktop
+exec --no-startup-id ibus-daemon --xim -d -r
 
 #Remap print screen to windows key
 exec --no-startup-id /usr/bin/xmodmap -e "add mod4 = Print"
